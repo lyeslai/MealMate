@@ -29,10 +29,13 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "recipes")
+@Getter @Setter
 @NoArgsConstructor 
 @AllArgsConstructor
 @Builder
@@ -50,7 +53,7 @@ public class Recipe {
     @Column(columnDefinition = "TEXT")
     private String instructions;
 
-    private Integer prparationTime;
+    private Integer preparationTime;
     private Integer cookTime;
 
     @Column(nullable = false)
@@ -77,7 +80,7 @@ public class Recipe {
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<RecipeIngredient> recipeIngredient = new ArrayList<>();
+    private List<RecipeIngredient> recipeIngredients = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "recipe_regimes_tags", joinColumns = @JoinColumn(name = "recipe_id"))

@@ -1,0 +1,36 @@
+Roadmap mise à jour
+Phase 1 — Backend fondations
+    Entités JPA + repositories + DTOs (Recipe, Ingredient, RecipeIngredient) 
+    Endpoints CRUD recettes/ingrédients 
+    Import d'un dataset de départ 
+Phase 2 — Auth 
+    Spring Security + JWT 
+    Inscription/connexion, gestion du profil (dont préférence alimentaire) 
+Phase 3 — Feature phare : matching par ingrédients 
+    Algo de scoring par ingrédients? 
+    Gestion des unités/conversions 
+    Calcul de calories par recette 
+Phase 4 — Ajustement des quantités 
+    Recalcul dynamique ingrédients + calories selon nb de convives (règle de trois à partir de baseServings) 
+    S'intègre directement à l'affichage recette et au matching 
+Phase 5 — Filtres avancés 
+    Filtres régime alimentaire, temps de prépa max, difficulté 
+    Croisement avec le matching par ingrédients (ex: "vegan + < 30 min + ce que j'ai dans le frigo") 
+Phase 6 — Interactions utilisateur 
+    Favoris Notation et avis (avec moyenne affichée sur la recette) 
+Phase 7 — Frontend web 
+    Accueil + filtres par type et régime Barre de recherche (Elasticsearch) 
+    Page "mes ingrédients" → résultats matchés Pages favoris, profil, avis 
+Phase 8 — Planning de repas 
+    Vue calendrier hebdomadaire 
+    Drag & drop des recettes (Angular CDK drag-drop, ça se marie bien avec le reste du stack) 
+    Génération de liste de courses à partir du planning (bonus naturel une fois ça en place) 
+Phase 9 — IA (Ollama)?
+    Substitution d'ingrédients (table IngredientSubstitution en dur + fallback IA si aucune substitution connue) 
+    Suggestions quand pas de match satisfaisant 
+Phase 10 — Mobile 
+    Ionic + Angular 
+Phase 11 — Polish / CV 
+    Tests (JUnit, Cypress/Playwright) 
+    CI/CD (Jenkins) 
+    Déploiement (Docker + Railway/Render)
