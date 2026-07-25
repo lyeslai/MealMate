@@ -4,6 +4,7 @@ import lombok.*;
 
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
+@Builder
 public class IngredientResponseDto {
 
     private Long id;
