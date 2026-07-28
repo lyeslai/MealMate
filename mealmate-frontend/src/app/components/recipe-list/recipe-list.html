@@ -1,0 +1,41 @@
+<div class="max-w-5xl mx-auto p-6">
+  <h1 class="text-2xl font-bold mb-6">MealMate — Recettes</h1>
+
+  <div class="flex gap-2 mb-8">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="onSearch()"
+      placeholder="Chercher une recette..."
+      class="flex-1 border rounded-lg px-4 py-2"
+    />
+    <button
+      (click)="onSearch()"
+      class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+    >
+      Rechercher
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="text-gray-500">Chargement...</div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div
+      *ngFor="let recipe of recipes"
+      class="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+    >
+      <img [src]="recipe.imageUrl" [alt]="recipe.title" class="w-full h-40 object-cover" />
+      <div class="p-4">
+        <h2 class="font-semibold text-lg">{{ recipe.title }}</h2>
+        <p class="text-sm text-gray-500">{{ recipe.recipeType }}</p>
+        <p class="text-sm mt-2" *ngIf="recipe.caloriePerServing">
+          {{ recipe.caloriePerServing }} kcal / portion
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && recipes.length === 0" class="text-gray-500 mt-8">
+    Aucune recette trouvée.
+  </div>
+</div>
