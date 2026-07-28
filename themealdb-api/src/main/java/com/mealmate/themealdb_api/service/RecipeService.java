@@ -38,8 +38,8 @@ public class RecipeService {
         return recipeMapper.toDto(recipe);
     }
 
-    public List<RecipeResponseDto> findByType(RecipeType type) {
-        return recipeRepository.findByType(type).stream()
+    public List<RecipeResponseDto> findByType(RecipeType recipeType) {
+        return recipeRepository.findByRecipeType(recipeType).stream()
                 .map(recipeMapper::toDto)
                 .toList();
     }

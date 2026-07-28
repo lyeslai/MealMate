@@ -23,14 +23,14 @@ public class RecipeController {
 
     @GetMapping
     public ResponseEntity<List<RecipeResponseDto>> findAll(
-            @RequestParam(required = false) RecipeType type,
+            @RequestParam(required = false) RecipeType recipeType,
             @RequestParam(required = false) String search) {
 
         if (search != null && !search.isBlank()) {
             return ResponseEntity.ok(recipeService.searchByTitle(search));
         }
-        if (type != null) {
-            return ResponseEntity.ok(recipeService.findByType(type));
+        if (recipeType != null) {
+            return ResponseEntity.ok(recipeService.findByType(recipeType));
         }
         return ResponseEntity.ok(recipeService.findAll());
     }

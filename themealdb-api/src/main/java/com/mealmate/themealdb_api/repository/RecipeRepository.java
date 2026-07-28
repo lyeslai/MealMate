@@ -9,7 +9,7 @@ import com.mealmate.themealdb_api.domain.enums.RecipeType;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
-    List<Recipe> findByType(RecipeType type);
+    List<Recipe> findByRecipeType(RecipeType recipeType);
 
     List<Recipe> findByTitleContainingIgnoreCase(String title);
 

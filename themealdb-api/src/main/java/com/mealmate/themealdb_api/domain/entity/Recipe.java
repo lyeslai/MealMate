@@ -1,6 +1,6 @@
 package com.mealmate.themealdb_api.domain.entity;
 
-import java.beans.JavaBean;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
