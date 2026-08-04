@@ -1,0 +1,72 @@
+<div class="max-w-sm mx-auto mt-16 p-6 border rounded-lg shadow-sm">
+
+  <div *ngIf="loggedInPseudo; else authForm">
+    <p class="text-lg mb-4">Connecté en tant que <strong>{{ loggedInPseudo }}</strong></p>
+    <button
+      (click)="logout()"
+      class="w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-900"
+    >
+      Se déconnecter
+    </button>
+  </div>
+
+  <ng-template #authForm>
+    <div class="flex mb-6 border rounded-lg overflow-hidden">
+      <button
+        (click)="switchMode('register')"
+        class="flex-1 py-2 text-sm font-medium"
+        [class.bg-blue-600]="mode === 'register'"
+        [class.text-white]="mode === 'register'"
+      >
+        Inscription
+      </button>
+      <button
+        (click)="switchMode('login')"
+        class="flex-1 py-2 text-sm font-medium"
+        [class.bg-blue-600]="mode === 'login'"
+        [class.text-white]="mode === 'login'"
+      >
+        Connexion
+      </button>
+    </div>
+
+    <form (ngSubmit)="submit()" class="flex flex-col gap-3">
+      <input
+        *ngIf="mode === 'register'"
+        type="text"
+        [(ngModel)]="pseudo"
+        name="pseudo"
+        placeholder="Pseudo"
+        required
+        class="border rounded-lg px-3 py-2"
+      />
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Email"
+        required
+        class="border rounded-lg px-3 py-2"
+      />
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Mot de passe"
+        required
+        class="border rounded-lg px-3 py-2"
+      />
+
+      <button
+        type="submit"
+        class="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 mt-2"
+      >
+        {{ mode === 'register' ? "S'inscrire" : 'Se connecter' }}
+      </button>
+    </form>
+
+    <p *ngIf="errorMessage" class="text-red-600 text-sm mt-3">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" class="text-green-600 text-sm mt-3">{{ successMessage }}</p>
+  </ng-template>
+
+</div>
